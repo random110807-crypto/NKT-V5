@@ -1,0 +1,36 @@
+{
+  "schema": 2,
+  "generatedAt": null,
+  "source": "Chess.com PubAPI",
+  "status": "awaiting-first-automation-run",
+  "monthlyRace": {
+    "month": null,
+    "eligibleCount": 0,
+    "methodology": "Top three positive Rapid rating improvements; requires a valid monthly baseline and at least 24 hours of observation.",
+    "rows": []
+  },
+  "overallLeaderboard": {
+    "rows": []
+  },
+  "clubMatches": {
+    "record": {
+      "wins": 0,
+      "losses": 0,
+      "draws": 0
+    },
+    "totals": {
+      "registered": 0,
+      "inProgress": 0,
+      "finished": 0
+    },
+    "matches": []
+  },
+  "notes": {
+    "history": "Tracking begins at first successful automation run. Members require a Rapid baseline and 24 hours of observation to qualify for monthly improvement.",
+    "unsupported": [
+      "MCA points leaderboard",
+      "Vote Chess event feed and standings",
+      "individual club-match contribution leaderboard"
+    ]
+  }
+}

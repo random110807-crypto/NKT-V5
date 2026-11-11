@@ -1,0 +1,10 @@
+{
+  "name": "nkt-chesscom-sidebar",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "update:data": "node scripts/update-nkt-data.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

@@ -1,0 +1,38 @@
+name: Update NKT automated sidebar data
+on:
+  schedule:
+    - cron: '23 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - '.github/workflows/update-nkt-data.yml'
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Collect Chess.com public data and build dashboard
+        run: node scripts/update-nkt-data.mjs
+        env:
+          CHESSCOM_USER_AGENT: NKT-Club-Sidebar/1.0 (Chess.com club Nashediyon Ki Toli)
+      - name: Commit generated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/nkt-state.json data/nkt-dashboard.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update automated NKT club data"
+            git push
+          else
+            echo "No dashboard changes to commit."
+          fi
